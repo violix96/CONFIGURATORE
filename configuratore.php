@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Configuratore
  * Description: Configuratore multi-step con percorsi dinamici: domande modificabili dalla bacheca, priorità delle richieste, archivio, email al gestore e all'utente, thank you page differenziate e statistiche di abbandono.
- * Version:     4.1.2
+ * Version:     4.1.3
  * Author:      LU3G Agenzia Web
  * Text Domain: configuratore
  * Requires PHP: 7.4
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PDZ_CONF_VERSION', '4.1.2' );
+define( 'PDZ_CONF_VERSION', '4.1.3' );
 define( 'PDZ_CONF_FILE', __FILE__ );
 define( 'PDZ_CONF_DIR', plugin_dir_path( __FILE__ ) );
 define( 'PDZ_CONF_URL', plugin_dir_url( __FILE__ ) );

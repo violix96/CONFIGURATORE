@@ -4,7 +4,7 @@ Tags: configuratore, form, lead, multistep, preventivo
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 4.1.2
+Stable tag: 4.1.3
 License: GPLv2 or later
 
 Configuratore multi-step con percorsi dinamici, priorità delle richieste, archivio in bacheca e statistiche di abbandono.

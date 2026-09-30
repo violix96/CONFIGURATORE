@@ -1,5 +1,8 @@
 # Changelog
 
+## 4.1.3
+- Versione di prova del sistema di aggiornamento automatico da GitHub. Nessuna modifica al funzionamento del configuratore.
+
 ## 4.1.2
 - Nelle statistiche nuovo periodo *12 mesi*. Oltre i tre mesi il grafico passa da giornaliero a mensile, altrimenti con un anno di dati diventa illeggibile.
 
