@@ -1,0 +1,1954 @@
+/**
+ * Configuratore Pedrinazzi — stile.
+ * Tutto sotto .pdz-conf per non entrare in conflitto con il tema.
+ */
+
+.pdz-conf {
+	--pdz-accent: #e4171c;
+	--pdz-accent-dark: #b81217;
+	--pdz-accent-soft: rgba(228, 23, 28, 0.06);
+	--pdz-ink: #14181c;
+	--pdz-ink-soft: #5c6771;
+	--pdz-line: #dfe4e8;
+	--pdz-line-strong: #c3ccd3;
+	--pdz-surface: #ffffff;
+	--pdz-surface-alt: #f4f6f8;
+	--pdz-radius: 4px;
+	--pdz-btn-radius: 4px;
+
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	color: var(--pdz-ink);
+	max-width: 100rem;
+	margin-inline: auto;
+	font-size: 1rem;
+	line-height: 1.55;
+	-webkit-font-smoothing: antialiased;
+}
+
+.pdz-conf *,
+.pdz-conf *::before,
+.pdz-conf *::after {
+	box-sizing: border-box;
+}
+
+.pdz-conf p {
+	margin: 0 0 0.85em;
+}
+
+.pdz-conf svg {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+/* --- Apertura ------------------------------------------------------------ */
+
+.pdz-hero {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2.5rem;
+	align-items: center;
+	padding: 0.5rem 0 0;
+}
+
+@media (min-width: 62rem) {
+	.pdz-hero {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+		gap: 4rem;
+	}
+
+	.pdz-conf--novisual .pdz-hero {
+		grid-template-columns: minmax(0, 46rem);
+	}
+}
+
+.pdz-hero__text {
+	max-width: 40rem;
+	animation: pdz-rise 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.pdz-hero__lead p {
+	color: var(--pdz-ink-soft);
+	font-size: 1.0625rem;
+	line-height: 1.6;
+}
+
+.pdz-hero__lead p:first-child {
+	font-size: 1.1875rem;
+	color: var(--pdz-ink);
+}
+
+.pdz-hero__cta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5rem 1.25rem;
+	margin-top: 2rem;
+}
+
+.pdz-hero__ctanote {
+	font-size: 0.8125rem;
+	color: var(--pdz-ink-soft);
+}
+
+.pdz-conf__kicker {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-size: 0.8125rem;
+	font-weight: 600;
+	letter-spacing: 0.01em;
+	color: var(--pdz-accent);
+	margin-bottom: 0.6em;
+}
+
+.pdz-conf__dot {
+	width: 0.4rem;
+	height: 0.4rem;
+	border-radius: 50%;
+	background: var(--pdz-accent);
+	animation: pdz-blink 2.6s ease-in-out infinite;
+}
+
+@keyframes pdz-blink {
+	0%, 100% { opacity: 1; transform: scale(1); }
+	50% { opacity: 0.35; transform: scale(0.8); }
+}
+
+/* --- Punti di apertura ---------------------------------------------------- */
+
+.pdz-points {
+	list-style: none;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+	gap: 1.25rem 2.5rem;
+	margin: 3rem 0 0;
+	padding: 0;
+}
+
+.pdz-points[hidden] {
+	display: none;
+}
+
+.pdz-point {
+	display: flex;
+	gap: 0.7rem;
+	align-items: flex-start;
+	padding-top: 1.1rem;
+	border-top: 1px solid var(--pdz-line);
+	animation: pdz-rise 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.pdz-point:nth-child(2) { animation-delay: 0.08s; }
+.pdz-point:nth-child(3) { animation-delay: 0.16s; }
+
+.pdz-point__n {
+	flex: 0 0 auto;
+	font-size: 0.8125rem;
+	font-weight: 700;
+	line-height: 1.35;
+	color: var(--pdz-accent);
+	font-variant-numeric: tabular-nums;
+	min-width: 0.9rem;
+}
+
+.pdz-point strong {
+	display: block;
+	font-size: 0.9375rem;
+	font-weight: 600;
+	line-height: 1.35;
+	margin-bottom: 0.15rem;
+}
+
+.pdz-point span {
+	display: block;
+	font-size: 0.875rem;
+	color: var(--pdz-ink-soft);
+	line-height: 1.5;
+}
+
+/* --- Illustrazioni di apertura -------------------------------------------- */
+
+.pdz-hero__visual {
+	animation: pdz-rise 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) 0.1s both;
+}
+
+.pdz-scene {
+	width: 100%;
+	height: auto;
+	max-height: 21rem;
+	fill: none;
+	overflow: visible;
+}
+
+/* Circuito con pompa ------------------------------------------------------- */
+
+.pdz-loop__cold-stop { stop-color: var(--pdz-line-strong); }
+.pdz-loop__hot-stop { stop-color: var(--pdz-accent); }
+
+.pdz-loop__tube {
+	stroke: var(--pdz-surface-alt);
+	stroke-width: 26;
+}
+
+.pdz-loop__hot,
+.pdz-loop__cool {
+	stroke-width: 14;
+	stroke-linecap: round;
+}
+
+.pdz-loop__hot {
+	stroke: url(#pdz-hot);
+	animation: pdz-swell 2.6s ease-in-out infinite;
+}
+
+.pdz-loop__cool {
+	stroke: url(#pdz-cool);
+	animation: pdz-swell 2.6s ease-in-out infinite 1.3s;
+}
+
+/* 75,98 è un decimo esatto del perimetro: il ciclo si chiude senza scalino. */
+.pdz-loop__sheen {
+	stroke: #fff;
+	stroke-width: 8;
+	stroke-linecap: round;
+	opacity: 0.42;
+	stroke-dasharray: 14 61.98;
+	animation: pdz-circulate 3.4s linear infinite;
+}
+
+.pdz-loop__exchanger rect,
+.pdz-loop__body {
+	fill: var(--pdz-surface);
+	stroke: var(--pdz-ink-soft);
+	stroke-width: 2;
+}
+
+.pdz-loop__fins {
+	stroke: var(--pdz-line);
+	stroke-width: 2;
+	stroke-linecap: round;
+}
+
+.pdz-loop__inner {
+	stroke: var(--pdz-line);
+	stroke-width: 1.6;
+}
+
+.pdz-loop__rotor {
+	stroke: var(--pdz-accent);
+	stroke-width: 7;
+	stroke-linecap: round;
+	transform-box: fill-box;
+	transform-origin: center;
+	animation: pdz-spin 2.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+.pdz-loop__hubdot {
+	fill: var(--pdz-surface);
+	stroke: var(--pdz-ink-soft);
+	stroke-width: 1.8;
+}
+
+/* Schema d'impianto -------------------------------------------------------- */
+
+.pdz-schema {
+	stroke: var(--pdz-line-strong);
+	stroke-width: 1.6;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.pdz-schema__gridpoint { fill: var(--pdz-line); stroke: none; }
+.pdz-schema__grid { stroke: none; }
+
+.pdz-schema__marks,
+.pdz-schema__dim {
+	stroke: var(--pdz-line);
+	stroke-width: 1.3;
+}
+
+.pdz-schema__frame,
+.pdz-schema__hub {
+	stroke: var(--pdz-ink-soft);
+	stroke-width: 1.8;
+}
+
+.pdz-schema__detail {
+	stroke: var(--pdz-line);
+	stroke-width: 1.4;
+}
+
+.pdz-schema__ring {
+	stroke: var(--pdz-accent);
+	stroke-width: 2;
+	stroke-dasharray: 15 10;
+	transform-box: fill-box;
+	transform-origin: center;
+	animation: pdz-spin 9s linear infinite;
+}
+
+.pdz-schema__core {
+	fill: var(--pdz-accent);
+	stroke: none;
+	transform-box: fill-box;
+	transform-origin: center;
+	animation: pdz-pulse 2.6s ease-in-out infinite;
+}
+
+.pdz-schema__link {
+	stroke: var(--pdz-accent);
+	stroke-width: 1.8;
+	stroke-dasharray: 6 7;
+	animation: pdz-dash 1.6s linear infinite;
+}
+
+.pdz-schema__link--2 { animation-duration: 2.4s; }
+.pdz-schema__link--3 { animation-duration: 2.4s; animation-direction: reverse; }
+
+.pdz-schema__nodes circle {
+	fill: var(--pdz-surface);
+	stroke: var(--pdz-accent);
+	stroke-width: 1.8;
+}
+
+/* Pompa e dosaggio --------------------------------------------------------- */
+
+.pdz-pump__tube {
+	stroke: var(--pdz-line);
+	stroke-width: 26;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.pdz-pump__fluid {
+	stroke: var(--pdz-accent);
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.pdz-pump__in {
+	stroke-width: 14;
+	animation: pdz-swell 2.6s ease-in-out infinite;
+}
+
+.pdz-pump__out {
+	stroke-width: 14;
+	animation: pdz-swell 2.6s ease-in-out infinite 1.3s;
+}
+
+.pdz-pump__sheen {
+	stroke: #fff;
+	stroke-width: 9;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	opacity: 0.35;
+	stroke-dasharray: 16 150;
+	animation: pdz-flow 2.6s linear infinite;
+}
+
+.pdz-pump__body,
+.pdz-pump__hubdot {
+	fill: var(--pdz-surface);
+	stroke: var(--pdz-ink-soft);
+	stroke-width: 2;
+}
+
+.pdz-pump__inner {
+	stroke: var(--pdz-line);
+	stroke-width: 1.6;
+}
+
+.pdz-pump__rotor {
+	stroke: var(--pdz-accent);
+	stroke-width: 9;
+	stroke-linecap: round;
+	transform-box: fill-box;
+	transform-origin: center;
+	animation: pdz-spin 2.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+.pdz-pump__drop {
+	fill: var(--pdz-accent);
+	opacity: 0;
+	transform-box: fill-box;
+	transform-origin: center;
+	animation: pdz-drop 2.6s cubic-bezier(0.5, 0, 0.75, 0) infinite;
+}
+
+.pdz-pump__drop--2 { animation-delay: 1.3s; }
+
+.pdz-pump__level {
+	fill: var(--pdz-accent);
+	transform-box: fill-box;
+	transform-origin: bottom;
+	animation: pdz-level 2.6s ease-in-out infinite;
+}
+
+.pdz-pump__vessel {
+	stroke: var(--pdz-ink-soft);
+	stroke-width: 2;
+	stroke-linecap: round;
+}
+
+/* Onda termica -------------------------------------------------------------- */
+
+.pdz-wave path {
+	fill: none;
+	stroke: url(#pdz-wavegrad);
+	stroke-width: 6;
+	stroke-linecap: round;
+}
+
+.pdz-wave__cold { stop-color: var(--pdz-line-strong); }
+.pdz-wave__hot { stop-color: var(--pdz-accent); }
+
+.pdz-wave__row {
+	animation: pdz-slide-x 3.6s linear infinite;
+}
+
+/* Resa energetica ----------------------------------------------------------- */
+
+.pdz-ratio circle {
+	fill: none;
+}
+
+.pdz-ratio__track {
+	stroke: var(--pdz-surface-alt);
+	stroke-width: 16;
+}
+
+.pdz-ratio__track--in {
+	stroke-width: 12;
+}
+
+/* 653,45 è la circonferenza esterna: tre quarti restano visibili. */
+.pdz-ratio__out {
+	stroke: var(--pdz-accent);
+	stroke-width: 16;
+	stroke-linecap: round;
+	stroke-dasharray: 490 164;
+	stroke-dashoffset: 0;
+	transform: rotate(-90deg);
+	transform-origin: center;
+	animation: pdz-ratio-out 5s ease-in-out infinite;
+}
+
+/* 452,39 è quella interna: ne resta un quarto. */
+.pdz-ratio__in {
+	stroke: var(--pdz-line-strong);
+	stroke-width: 12;
+	stroke-linecap: round;
+	stroke-dasharray: 113 340;
+	transform: rotate(-90deg);
+	transform-origin: center;
+	animation: pdz-ratio-in 5s ease-in-out infinite;
+}
+
+.pdz-ratio__runner {
+	transform-origin: 150px 150px;
+	animation: pdz-spin 5s linear infinite;
+}
+
+.pdz-ratio__runner circle {
+	fill: var(--pdz-accent);
+	stroke: none;
+}
+
+.pdz-ratio__core {
+	fill: none;
+	stroke: var(--pdz-ink-soft);
+	stroke-width: 2;
+	transform-box: fill-box;
+	transform-origin: center;
+	animation: pdz-pulse-soft 2.5s ease-in-out infinite;
+}
+
+/* Impulso in rete ----------------------------------------------------------- */
+
+.pdz-net__dots circle {
+	fill: var(--pdz-line);
+	stroke: none;
+}
+
+.pdz-net__line,
+.pdz-net__pulse {
+	fill: none;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.pdz-net__line {
+	stroke: var(--pdz-surface-alt);
+	stroke-width: 10;
+}
+
+/* 520 è la lunghezza del tracciato. */
+.pdz-net__pulse {
+	stroke: var(--pdz-accent);
+	stroke-width: 4;
+	stroke-dasharray: 90 430;
+	animation: pdz-run 3.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+.pdz-net__node {
+	fill: var(--pdz-surface);
+	stroke: var(--pdz-accent);
+	stroke-width: 3;
+	transform-box: fill-box;
+	transform-origin: center;
+	animation: pdz-node 3.2s ease-out infinite;
+}
+
+.pdz-net__node--1 { animation-delay: 0.55s; }
+.pdz-net__node--2 { animation-delay: 1.15s; }
+.pdz-net__node--3 { animation-delay: 1.75s; }
+
+/* Emissione ----------------------------------------------------------------- */
+
+.pdz-emit__wave {
+	fill: none;
+	stroke: var(--pdz-accent);
+	stroke-width: 5;
+	stroke-linecap: round;
+	transform-box: fill-box;
+	transform-origin: left center;
+	opacity: 0;
+	animation: pdz-emit 3s ease-out infinite;
+}
+
+.pdz-emit__wave--2 { animation-delay: 1s; }
+.pdz-emit__wave--3 { animation-delay: 2s; }
+
+.pdz-emit__unit {
+	fill: var(--pdz-surface);
+	stroke: var(--pdz-ink-soft);
+	stroke-width: 2;
+}
+
+.pdz-emit__fan {
+	fill: none;
+	stroke: var(--pdz-line);
+	stroke-width: 1.6;
+}
+
+.pdz-emit__blades {
+	fill: none;
+	stroke: var(--pdz-accent);
+	stroke-width: 5;
+	stroke-linecap: round;
+	transform-box: fill-box;
+	transform-origin: center;
+	animation: pdz-spin 3s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+.pdz-emit__vent {
+	stroke: var(--pdz-line);
+	stroke-width: 3;
+	stroke-linecap: round;
+}
+
+/* Movimenti condivisi ------------------------------------------------------ */
+
+@keyframes pdz-spin { to { transform: rotate(360deg); } }
+@keyframes pdz-circulate { to { stroke-dashoffset: -75.98; } }
+@keyframes pdz-dash { to { stroke-dashoffset: -26; } }
+@keyframes pdz-flow { from { stroke-dashoffset: 166; } to { stroke-dashoffset: 0; } }
+@keyframes pdz-swell {
+	0%, 100% { stroke-width: 13; }
+	50% { stroke-width: 15.5; }
+}
+@keyframes pdz-pulse {
+	0%, 100% { transform: scale(1); opacity: 1; }
+	50% { transform: scale(1.6); opacity: 0.55; }
+}
+@keyframes pdz-drop {
+	0% { transform: translateY(0) scale(0.6); opacity: 0; }
+	12% { opacity: 1; }
+	70% { transform: translateY(56px) scale(1); opacity: 1; }
+	84% { transform: translateY(64px) scaleY(0.55) scaleX(1.25); opacity: 0.5; }
+	100% { transform: translateY(64px) scaleY(0.3) scaleX(1.4); opacity: 0; }
+}
+@keyframes pdz-level {
+	0%, 100% { transform: scaleY(1); }
+	50% { transform: scaleY(1.1); }
+}
+@keyframes pdz-slide-x {
+	to { transform: translateX(120px); }
+}
+@keyframes pdz-ratio-out {
+	0%, 100% { stroke-dasharray: 490 164; }
+	50% { stroke-dasharray: 470 184; }
+}
+@keyframes pdz-ratio-in {
+	0%, 100% { stroke-dasharray: 113 340; }
+	50% { stroke-dasharray: 100 353; }
+}
+@keyframes pdz-pulse-soft {
+	0%, 100% { transform: scale(1); opacity: 1; }
+	50% { transform: scale(1.12); opacity: 0.6; }
+}
+@keyframes pdz-run {
+	from { stroke-dashoffset: 520; }
+	to { stroke-dashoffset: -90; }
+}
+@keyframes pdz-node {
+	0%, 40% { transform: scale(1); fill: var(--pdz-surface); }
+	12% { transform: scale(1.45); fill: var(--pdz-accent); }
+	100% { transform: scale(1); fill: var(--pdz-surface); }
+}
+@keyframes pdz-emit {
+	0% { transform: scale(0.35); opacity: 0; }
+	25% { opacity: 0.85; }
+	100% { transform: scale(1); opacity: 0; }
+}
+
+/* --- Vecchia intro (compatibilità) --------------------------------------- */
+
+.pdz-conf__intro {
+	max-width: 44rem;
+}
+
+.pdz-conf__title {
+	font-size: clamp(1.75rem, 1.2rem + 2vw, 2.75rem);
+	font-weight: 700;
+	letter-spacing: -0.024em;
+	line-height: 1.1;
+	margin: 0 0 0.6em;
+	color: var(--pdz-ink);
+}
+
+.pdz-conf__intro p {
+	color: var(--pdz-ink-soft);
+}
+
+.pdz-conf__note {
+	border-left: 2px solid var(--pdz-line-strong);
+	padding-left: 1rem;
+	font-size: 0.9375rem;
+	margin-bottom: 1.75em;
+}
+
+/* --- Bottoni ------------------------------------------------------------ */
+
+.pdz-conf .pdz-btn {
+	font: inherit;
+	font-weight: 600;
+	border: 1px solid transparent;
+	border-radius: var(--pdz-btn-radius);
+	padding: 0.85rem 1.6rem;
+	cursor: pointer;
+	transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.pdz-conf .pdz-btn--lg {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.75rem;
+	font-size: 1.0625rem;
+	padding: 1rem 1.9rem;
+}
+
+.pdz-btn__arrow {
+	width: 1.1rem;
+	height: 0.6rem;
+	position: relative;
+	transition: transform 0.18s ease;
+}
+
+.pdz-btn__arrow::before,
+.pdz-btn__arrow::after {
+	content: '';
+	position: absolute;
+	background: currentColor;
+}
+
+.pdz-btn__arrow::before {
+	left: 0;
+	top: 50%;
+	width: 100%;
+	height: 1.5px;
+	transform: translateY(-50%);
+}
+
+.pdz-btn__arrow::after {
+	right: 0;
+	top: 50%;
+	width: 0.42rem;
+	height: 0.42rem;
+	background: none;
+	border-top: 1.5px solid currentColor;
+	border-right: 1.5px solid currentColor;
+	transform: translateY(-50%) rotate(45deg);
+}
+
+.pdz-btn--lg:hover .pdz-btn__arrow {
+	transform: translateX(3px);
+}
+
+.pdz-conf .pdz-btn--primary {
+	background: var(--pdz-accent);
+	color: #fff;
+}
+
+.pdz-conf .pdz-btn--primary:hover {
+	background: var(--pdz-accent-dark);
+}
+
+.pdz-conf .pdz-btn--primary:disabled {
+	background: var(--pdz-line-strong);
+	cursor: progress;
+}
+
+.pdz-conf .pdz-btn--ghost {
+	background: transparent;
+	color: var(--pdz-ink-soft);
+	border-color: var(--pdz-line);
+}
+
+.pdz-conf .pdz-btn--ghost:hover {
+	color: var(--pdz-ink);
+	border-color: var(--pdz-line-strong);
+}
+
+.pdz-conf :focus-visible {
+	outline: 2px solid var(--pdz-accent);
+	outline-offset: 2px;
+}
+
+/* --- Impaginazione ------------------------------------------------------ */
+
+.pdz-layout {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2rem;
+	align-items: start;
+}
+
+.pdz-main {
+	max-width: 66rem;
+	min-width: 0;
+}
+
+@media (min-width: 62rem) {
+	.pdz-layout {
+		grid-template-columns: 16rem minmax(0, 1fr);
+		gap: 4rem;
+	}
+
+	.pdz-rail {
+		position: sticky;
+		top: 2rem;
+	}
+}
+
+/* --- Colonna delle fasi -------------------------------------------------- */
+
+.pdz-rail__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	gap: 0.5rem;
+}
+
+.pdz-rail__item {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	flex: 1 1 0;
+	min-width: 0;
+	color: var(--pdz-ink-soft);
+	position: relative;
+}
+
+.pdz-rail__mark {
+	flex: 0 0 auto;
+	width: 2.25rem;
+	height: 2.25rem;
+	padding: 0.55rem;
+	border: 1px solid var(--pdz-line);
+	border-radius: 50%;
+	color: var(--pdz-line-strong);
+	background: var(--pdz-surface);
+	transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.pdz-rail__text {
+	display: none;
+}
+
+.pdz-rail__item.is-current .pdz-rail__mark {
+	color: var(--pdz-accent);
+	border-color: var(--pdz-accent);
+	background: var(--pdz-accent-soft);
+}
+
+.pdz-rail__item.is-done .pdz-rail__mark {
+	color: #fff;
+	background: var(--pdz-accent);
+	border-color: var(--pdz-accent);
+	animation: pdz-pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.pdz-rail__item.is-current,
+.pdz-rail__item.is-done {
+	color: var(--pdz-ink);
+}
+
+@media (min-width: 62rem) {
+	.pdz-rail__list {
+		flex-direction: column;
+		gap: 0;
+	}
+
+	.pdz-rail__item {
+		flex: 0 0 auto;
+		align-items: flex-start;
+		padding-bottom: 1.6rem;
+	}
+
+	/* filo che collega le fasi */
+	.pdz-rail__item::before {
+		content: '';
+		position: absolute;
+		left: 1.125rem;
+		top: 2.25rem;
+		bottom: 0;
+		width: 1px;
+		background: var(--pdz-line);
+	}
+
+	.pdz-rail__item:last-child {
+		padding-bottom: 0;
+	}
+
+	.pdz-rail__item:last-child::before {
+		display: none;
+	}
+
+	.pdz-rail__item.is-done::before {
+		background: var(--pdz-accent);
+	}
+
+	.pdz-rail__text {
+		display: block;
+		padding-top: 0.3rem;
+	}
+
+	.pdz-rail__label {
+		display: block;
+		font-size: 0.9375rem;
+		font-weight: 600;
+		line-height: 1.3;
+	}
+
+	.pdz-rail__count {
+		display: block;
+		font-size: 0.8125rem;
+		color: var(--pdz-ink-soft);
+		font-variant-numeric: tabular-nums;
+	}
+}
+
+/* --- Avanzamento -------------------------------------------------------- */
+
+.pdz-progress {
+	margin-bottom: 2.25rem;
+}
+
+.pdz-progress__track {
+	height: 3px;
+	background: var(--pdz-line);
+	border-radius: 2px;
+	overflow: hidden;
+}
+
+.pdz-progress__bar {
+	height: 100%;
+	background: var(--pdz-accent);
+	transition: width 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.pdz-progress__label {
+	margin: 0.6rem 0 0;
+	font-size: 0.8125rem;
+	color: var(--pdz-ink-soft);
+	font-variant-numeric: tabular-nums;
+}
+
+/* --- Step --------------------------------------------------------------- */
+
+.pdz-step {
+	animation: pdz-rise 0.32s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.pdz-step--fwd {
+	animation: pdz-in-fwd 0.34s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.pdz-step--back {
+	animation: pdz-in-back 0.34s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.pdz-step__head {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.85rem;
+	margin-bottom: 0.6rem;
+}
+
+.pdz-step__icon {
+	flex: 0 0 auto;
+	width: 1.75rem;
+	height: 1.75rem;
+	margin-top: 0.2rem;
+	color: var(--pdz-accent);
+}
+
+.pdz-step__title {
+	font-size: clamp(1.35rem, 1.1rem + 1vw, 1.75rem);
+	font-weight: 600;
+	letter-spacing: -0.02em;
+	line-height: 1.22;
+	margin: 0;
+	max-width: 34rem;
+}
+
+.pdz-step__title:focus {
+	outline: none;
+}
+
+.pdz-step__intro {
+	color: var(--pdz-ink-soft);
+	font-size: 0.9375rem;
+	max-width: 36rem;
+	margin-bottom: 1.6em;
+}
+
+.pdz-field {
+	margin-bottom: 2.25rem;
+}
+
+/* Campo non compilato: si evidenzia la domanda, non solo il messaggio. */
+.pdz-field.is-invalid {
+	border-left: 3px solid var(--pdz-accent);
+	padding-left: 1.1rem;
+	margin-left: -1.4rem;
+	animation: pdz-nudge 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.pdz-field.is-invalid .pdz-legend,
+.pdz-field.is-invalid .pdz-label {
+	color: var(--pdz-accent-dark);
+}
+
+.pdz-field.is-invalid .pdz-option {
+	border-color: rgba(228, 23, 28, 0.35);
+}
+
+.pdz-field.is-invalid .pdz-input {
+	border-color: var(--pdz-accent);
+	box-shadow: 0 0 0 3px var(--pdz-accent-soft);
+}
+
+.pdz-fielderror {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.5rem;
+	margin: 0 0 0.85rem;
+	font-size: 0.9375rem;
+	font-weight: 500;
+	line-height: 1.45;
+	color: var(--pdz-accent-dark);
+	max-width: 34rem;
+}
+
+.pdz-fielderror::before {
+	content: '';
+	flex: 0 0 auto;
+	width: 1.05rem;
+	height: 1.05rem;
+	margin-top: 0.15rem;
+	border-radius: 50%;
+	background: var(--pdz-accent);
+	-webkit-mask: no-repeat center / 0.7rem url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M12 6v8M12 18h.01'/%3E%3C/svg%3E");
+	mask: no-repeat center / 0.7rem url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M12 6v8M12 18h.01'/%3E%3C/svg%3E");
+}
+
+@keyframes pdz-nudge {
+	0%, 100% { transform: translateX(0); }
+	25% { transform: translateX(-5px); }
+	60% { transform: translateX(3px); }
+}
+
+.pdz-group {
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+.pdz-legend,
+.pdz-label {
+	display: block;
+	font-size: 0.9375rem;
+	font-weight: 600;
+	margin-bottom: 0.75rem;
+	padding: 0;
+}
+
+.pdz-legend--sr {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
+}
+
+.pdz-hint {
+	font-size: 0.8125rem;
+	color: var(--pdz-ink-soft);
+	margin: -0.45rem 0 0.75rem;
+}
+
+/* --- Opzioni ------------------------------------------------------------ */
+
+.pdz-options {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+	gap: 0.6rem;
+}
+
+.pdz-options--iconic {
+	grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+}
+
+.pdz-option {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
+	padding: 0.9rem 1.1rem;
+	background: var(--pdz-surface);
+	border: 1px solid var(--pdz-line);
+	border-left: 3px solid var(--pdz-line);
+	border-radius: var(--pdz-radius);
+	cursor: pointer;
+	transition: border-color 0.14s ease, background-color 0.14s ease, transform 0.14s ease;
+	animation: pdz-rise 0.3s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.pdz-step.is-static,
+.pdz-step.is-static .pdz-option,
+.pdz-step.is-static .pdz-notice {
+	animation: none;
+}
+
+.pdz-option:nth-child(1) { animation-delay: 0.02s; }
+.pdz-option:nth-child(2) { animation-delay: 0.05s; }
+.pdz-option:nth-child(3) { animation-delay: 0.08s; }
+.pdz-option:nth-child(4) { animation-delay: 0.11s; }
+.pdz-option:nth-child(5) { animation-delay: 0.14s; }
+.pdz-option:nth-child(6) { animation-delay: 0.17s; }
+.pdz-option:nth-child(7) { animation-delay: 0.2s; }
+.pdz-option:nth-child(n + 8) { animation-delay: 0.23s; }
+
+.pdz-option:hover {
+	border-color: var(--pdz-line-strong);
+	border-left-color: var(--pdz-accent);
+	transform: translateX(2px);
+}
+
+.pdz-option__input {
+	appearance: none;
+	-webkit-appearance: none;
+	flex: 0 0 auto;
+	width: 1.05rem;
+	height: 1.05rem;
+	margin: 0;
+	border: 1.5px solid var(--pdz-line-strong);
+	background: #fff;
+	cursor: pointer;
+	transition: box-shadow 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.15s ease,
+		background-color 0.15s ease;
+}
+
+.pdz-option__input[type='radio'] {
+	border-radius: 50%;
+}
+
+.pdz-option__input[type='checkbox'] {
+	border-radius: 2px;
+}
+
+.pdz-option__input:checked {
+	border-color: var(--pdz-accent);
+	background: var(--pdz-accent);
+	box-shadow: inset 0 0 0 3px #fff;
+}
+
+.pdz-option__input[type='checkbox']:checked {
+	box-shadow: inset 0 0 0 2px #fff;
+}
+
+.pdz-option__icon {
+	flex: 0 0 auto;
+	width: 2.4rem;
+	height: 2.4rem;
+	padding: 0.55rem;
+	border-radius: 4px;
+	background: var(--pdz-surface-alt);
+	color: var(--pdz-ink-soft);
+	transition: color 0.18s ease, background-color 0.18s ease, transform 0.18s ease;
+}
+
+.pdz-option:hover .pdz-option__icon {
+	transform: scale(1.06);
+}
+
+.pdz-option:has(.pdz-option__input:checked) {
+	border-color: var(--pdz-line-strong);
+	border-left-color: var(--pdz-accent);
+	background: var(--pdz-accent-soft);
+}
+
+.pdz-option:has(.pdz-option__input:checked) .pdz-option__icon {
+	color: #fff;
+	background: var(--pdz-accent);
+}
+
+/* Con le icone le opzioni respirano un po' di più. */
+.pdz-options--iconic .pdz-option {
+	padding: 0.75rem 1.1rem;
+	gap: 0.9rem;
+}
+
+.pdz-option__text {
+	font-size: 0.9375rem;
+	line-height: 1.4;
+}
+
+/* --- Campi liberi -------------------------------------------------------- */
+
+.pdz-input {
+	width: 100%;
+	max-width: 34rem;
+	font: inherit;
+	font-size: 1rem;
+	color: var(--pdz-ink);
+	padding: 0.8rem 0.95rem;
+	background: var(--pdz-surface);
+	border: 1px solid var(--pdz-line-strong);
+	border-radius: var(--pdz-radius);
+	transition: border-color 0.14s ease, box-shadow 0.14s ease;
+}
+
+.pdz-input:hover {
+	border-color: var(--pdz-ink-soft);
+}
+
+.pdz-input:focus {
+	border-color: var(--pdz-accent);
+}
+
+.pdz-input--area {
+	resize: vertical;
+	min-height: 6.5rem;
+	line-height: 1.5;
+	max-width: 42rem;
+}
+
+.pdz-conf select.pdz-input {
+	appearance: none;
+	background-image: linear-gradient(45deg, transparent 50%, var(--pdz-ink-soft) 50%),
+		linear-gradient(135deg, var(--pdz-ink-soft) 50%, transparent 50%);
+	background-position: calc(100% - 1.1rem) 1.3rem, calc(100% - 0.75rem) 1.3rem;
+	background-size: 6px 6px, 6px 6px;
+	background-repeat: no-repeat;
+	padding-right: 2.5rem;
+}
+
+/* --- Upload -------------------------------------------------------------- */
+
+.pdz-file__input {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+}
+
+.pdz-file__cta {
+	display: inline-block;
+	font-size: 0.9375rem;
+	font-weight: 500;
+	padding: 0.75rem 1.3rem;
+	border: 1px dashed var(--pdz-line-strong);
+	border-radius: var(--pdz-btn-radius);
+	cursor: pointer;
+	background: var(--pdz-surface-alt);
+	transition: border-color 0.14s ease, color 0.14s ease;
+}
+
+.pdz-file__cta:hover {
+	border-color: var(--pdz-accent);
+	color: var(--pdz-accent);
+}
+
+.pdz-file__input:focus-visible + .pdz-file__cta {
+	outline: 2px solid var(--pdz-accent);
+	outline-offset: 2px;
+}
+
+.pdz-file__list {
+	list-style: none;
+	margin: 0.9rem 0 0;
+	padding: 0;
+	font-size: 0.875rem;
+	max-width: 34rem;
+}
+
+.pdz-file__list li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+	padding: 0.55rem 0;
+	border-bottom: 1px solid var(--pdz-line);
+	animation: pdz-rise 0.24s ease both;
+}
+
+.pdz-file__meter {
+	margin: 0.6rem 0 0;
+	font-size: 0.8125rem;
+	color: var(--pdz-ink-soft);
+	font-variant-numeric: tabular-nums;
+}
+
+.pdz-file__meter[hidden] {
+	display: none;
+}
+
+.pdz-file__warn {
+	margin: 0.6rem 0 0;
+	font-size: 0.8125rem;
+	font-weight: 500;
+	color: var(--pdz-accent-dark);
+	max-width: 34rem;
+}
+
+.pdz-file__warn[hidden] {
+	display: none;
+}
+
+.pdz-file__remove {
+	font: inherit;
+	font-size: 0.8125rem;
+	background: none;
+	border: 0;
+	padding: 0;
+	color: var(--pdz-accent);
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+/* --- Consenso ------------------------------------------------------------ */
+
+.pdz-consent {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.7rem;
+	font-size: 0.875rem;
+	color: var(--pdz-ink-soft);
+	cursor: pointer;
+	max-width: 34rem;
+}
+
+.pdz-consent__input {
+	flex: 0 0 auto;
+	width: 1.05rem;
+	height: 1.05rem;
+	margin: 0.15rem 0 0;
+	accent-color: var(--pdz-accent);
+}
+
+.pdz-consent a {
+	color: var(--pdz-accent);
+}
+
+/* --- Messaggi ------------------------------------------------------------ */
+
+.pdz-notice {
+	background: var(--pdz-surface-alt);
+	border-left: 3px solid var(--pdz-ink-soft);
+	padding: 0.95rem 1.15rem;
+	font-size: 0.9375rem;
+	color: var(--pdz-ink-soft);
+	margin-bottom: 1.5rem;
+	max-width: 42rem;
+	animation: pdz-rise 0.3s ease both;
+}
+
+.pdz-error {
+	color: var(--pdz-accent-dark);
+	background: var(--pdz-accent-soft);
+	border-left: 3px solid var(--pdz-accent);
+	padding: 0.9rem 1.1rem;
+	font-size: 0.9375rem;
+	font-weight: 500;
+	line-height: 1.45;
+	margin: 0 0 1rem;
+	max-width: 42rem;
+}
+
+.pdz-error[hidden] {
+	display: none;
+}
+
+.pdz-done {
+	border-top: 3px solid var(--pdz-accent);
+	padding-top: 1.75rem;
+	max-width: 40rem;
+	animation: pdz-rise 0.4s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.pdz-done h3 {
+	font-size: 1.5rem;
+	font-weight: 600;
+	letter-spacing: -0.018em;
+	margin: 0 0 0.5em;
+}
+
+.pdz-done p {
+	color: var(--pdz-ink-soft);
+}
+
+.pdz-done__cta {
+	margin-top: 1.75rem;
+}
+
+.pdz-done__cta a {
+	display: inline-block;
+	text-decoration: none;
+	color: #fff;
+}
+
+.pdz-done__cta a:hover {
+	color: #fff;
+}
+
+.pdz-done:focus {
+	outline: none;
+}
+
+/* --- Navigazione --------------------------------------------------------- */
+
+.pdz-nav {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	align-items: center;
+	padding-top: 1.25rem;
+	border-top: 1px solid var(--pdz-line);
+	margin-top: 2.5rem;
+	max-width: 66rem;
+}
+
+.pdz-nav .pdz-btn--primary {
+	margin-left: auto;
+}
+
+@media (max-width: 30rem) {
+	.pdz-nav .pdz-btn {
+		flex: 1 1 100%;
+		text-align: center;
+	}
+
+	.pdz-nav .pdz-btn--primary {
+		order: -1;
+		margin-left: 0;
+	}
+}
+
+/* --- Movimento ----------------------------------------------------------- */
+
+@keyframes pdz-in-fwd {
+	from {
+		opacity: 0;
+		transform: translate3d(22px, 0, 0);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@keyframes pdz-in-back {
+	from {
+		opacity: 0;
+		transform: translate3d(-22px, 0, 0);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@keyframes pdz-pop {
+	0% { transform: scale(0.7); }
+	60% { transform: scale(1.12); }
+	100% { transform: scale(1); }
+}
+
+@keyframes pdz-rise {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.pdz-conf *,
+	.pdz-conf *::before,
+	.pdz-conf *::after {
+		animation: none !important;
+		transition: none !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+/* =========================================================================
+   TEMI
+   Varianti di aspetto applicate sopra la struttura di base.
+   ========================================================================= */
+
+/* Nasconde il conteggio delle domande nella colonna delle fasi. */
+.pdz-conf--nocount .pdz-rail__count {
+	display: none;
+}
+
+/* --- Pannello: il configuratore dentro una scheda rialzata ---------------- */
+
+.pdz-conf--tema-pannello .pdz-conf__app,
+.pdz-conf--tema-pannello .pdz-hero {
+	background: var(--pdz-surface);
+	border: 1px solid var(--pdz-line);
+	border-radius: 10px;
+	box-shadow: 0 1px 2px rgba(20, 24, 28, 0.04), 0 12px 32px -18px rgba(20, 24, 28, 0.25);
+	padding: clamp(1.5rem, 1rem + 2vw, 3rem);
+}
+
+.pdz-conf--tema-pannello .pdz-hero {
+	margin-bottom: 1.5rem;
+}
+
+.pdz-conf--tema-pannello .pdz-points {
+	margin-top: 1.5rem;
+}
+
+.pdz-conf--tema-pannello .pdz-nav {
+	border-top: 0;
+	margin-top: 2rem;
+	padding-top: 0;
+}
+
+.pdz-conf--tema-pannello .pdz-option {
+	background: var(--pdz-surface-alt);
+	border-color: transparent;
+	border-left-color: transparent;
+}
+
+.pdz-conf--tema-pannello .pdz-option:hover {
+	background: #fff;
+	border-color: var(--pdz-line-strong);
+}
+
+.pdz-conf--tema-pannello .pdz-option:has(.pdz-option__input:checked) {
+	background: var(--pdz-surface);
+	border-color: var(--pdz-accent);
+	border-left-color: var(--pdz-accent);
+}
+
+.pdz-conf--tema-pannello .pdz-option__icon {
+	background: var(--pdz-surface);
+}
+
+/* --- Contrasto: corsia scura ---------------------------------------------- */
+
+@media (min-width: 62rem) {
+	.pdz-conf--tema-contrasto .pdz-layout {
+		gap: 0;
+		grid-template-columns: 18rem minmax(0, 1fr);
+		border: 1px solid var(--pdz-line);
+		border-radius: 10px;
+		overflow: hidden;
+	}
+
+	.pdz-conf--tema-contrasto .pdz-rail {
+		position: sticky;
+		align-self: stretch;
+		background: var(--pdz-ink);
+		padding: 2.5rem 2rem;
+		height: 100%;
+	}
+
+	.pdz-conf--tema-contrasto .pdz-main {
+		padding: 2.5rem 2.75rem;
+		background: var(--pdz-surface);
+	}
+
+	.pdz-conf--tema-contrasto .pdz-nav {
+		margin-inline: 2.75rem;
+		margin-bottom: 2.5rem;
+	}
+}
+
+.pdz-conf--tema-contrasto .pdz-rail__label {
+	color: #fff;
+}
+
+.pdz-conf--tema-contrasto .pdz-rail__count,
+.pdz-conf--tema-contrasto .pdz-rail__item {
+	color: rgba(255, 255, 255, 0.55);
+}
+
+.pdz-conf--tema-contrasto .pdz-rail__mark {
+	background: transparent;
+	border-color: rgba(255, 255, 255, 0.22);
+	color: rgba(255, 255, 255, 0.45);
+}
+
+.pdz-conf--tema-contrasto .pdz-rail__item.is-current .pdz-rail__mark {
+	background: var(--pdz-accent);
+	border-color: var(--pdz-accent);
+	color: #fff;
+}
+
+.pdz-conf--tema-contrasto .pdz-rail__item.is-done .pdz-rail__mark {
+	background: transparent;
+	border-color: var(--pdz-accent);
+	color: var(--pdz-accent);
+}
+
+@media (min-width: 62rem) {
+	.pdz-conf--tema-contrasto .pdz-rail__item::before {
+		background: rgba(255, 255, 255, 0.15);
+	}
+
+	.pdz-conf--tema-contrasto .pdz-rail__item.is-done::before {
+		background: var(--pdz-accent);
+	}
+}
+
+/* --- Ampio: corsia a sole icone, testi grandi ----------------------------- */
+
+@media (min-width: 62rem) {
+	.pdz-conf--tema-ampio .pdz-layout {
+		grid-template-columns: 3.5rem minmax(0, 1fr);
+		gap: 3rem;
+	}
+
+	.pdz-conf--tema-ampio .pdz-rail__text {
+		display: none;
+	}
+
+	.pdz-conf--tema-ampio .pdz-rail__item {
+		padding-bottom: 2.25rem;
+	}
+
+	.pdz-conf--tema-ampio .pdz-main {
+		max-width: none;
+	}
+
+	.pdz-conf--tema-ampio .pdz-step__title {
+		font-size: clamp(1.6rem, 1.1rem + 1.6vw, 2.25rem);
+		max-width: 46rem;
+	}
+
+	.pdz-conf--tema-ampio .pdz-options {
+		grid-template-columns: repeat(auto-fit, minmax(13.5rem, 1fr));
+	}
+
+	.pdz-conf--tema-ampio .pdz-nav {
+		max-width: none;
+	}
+}
+
+.pdz-conf--tema-ampio .pdz-step__icon {
+	display: none;
+}
+
+.pdz-conf--tema-ampio .pdz-option {
+	padding: 0.8rem 1rem;
+}
+
+.pdz-conf--tema-ampio .pdz-option__text {
+	font-size: 0.875rem;
+}
+
+/* --- Vivace: pannello immersivo su fondo scuro ----------------------------- */
+
+/* Ridefinendo le variabili, tutti i componenti si adattano al fondo scuro. */
+.pdz-conf--tema-vivace {
+	--pdz-ink: #f2f5f7;
+	--pdz-ink-soft: rgba(242, 245, 247, 0.62);
+	--pdz-line: rgba(255, 255, 255, 0.12);
+	--pdz-line-strong: rgba(255, 255, 255, 0.24);
+	--pdz-surface: rgba(255, 255, 255, 0.05);
+	--pdz-surface-alt: rgba(255, 255, 255, 0.09);
+	--pdz-accent-soft: rgba(255, 255, 255, 0.08);
+	--pdz-radius: 16px;
+	/* Personalizzabili dalle impostazioni. */
+	--pdz-vivace-bg: #0c0f13;
+	--pdz-secondo: #ff9a3d;
+	--pdz-vivace-radius: 28px;
+	--pdz-tempo: 1;
+	--pdz-sfumatura: linear-gradient(115deg, var(--pdz-accent), var(--pdz-secondo));
+
+	position: relative;
+	isolation: isolate;
+	overflow: hidden;
+	border-radius: var(--pdz-vivace-radius);
+	padding: clamp(1.75rem, 1rem + 3vw, 4rem);
+	background: var(--pdz-vivace-bg);
+	color: var(--pdz-ink);
+}
+
+/* Interruttori dalle impostazioni. */
+.pdz-vivace--senza-aloni::before,
+.pdz-vivace--senza-aloni::after {
+	display: none;
+}
+
+.pdz-vivace--senza-vetro .pdz-option,
+.pdz-vivace--senza-vetro .pdz-rail__mark {
+	backdrop-filter: none;
+}
+
+/* Due aloni che si muovono lentamente sul fondo. */
+.pdz-conf--tema-vivace::before,
+.pdz-conf--tema-vivace::after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	border-radius: 50%;
+	filter: blur(70px);
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+.pdz-conf--tema-vivace::before {
+	width: 34rem;
+	height: 34rem;
+	top: -14rem;
+	right: -10rem;
+	background: radial-gradient(circle, var(--pdz-accent), transparent 65%);
+	animation: pdz-alone-a calc(18s * var(--pdz-tempo)) ease-in-out infinite alternate;
+}
+
+.pdz-conf--tema-vivace::after {
+	width: 28rem;
+	height: 28rem;
+	bottom: -12rem;
+	left: -8rem;
+	background: radial-gradient(circle, var(--pdz-secondo), transparent 65%);
+	animation: pdz-alone-b calc(22s * var(--pdz-tempo)) ease-in-out infinite alternate;
+}
+
+@keyframes pdz-alone-a {
+	to { transform: translate3d(-4rem, 3rem, 0) scale(1.15); }
+}
+
+@keyframes pdz-alone-b {
+	to { transform: translate3d(3rem, -3rem, 0) scale(1.2); }
+}
+
+/* Titoli grandi, sopratitolo a pastiglia. */
+.pdz-conf--tema-vivace .pdz-conf__title {
+	font-size: clamp(2rem, 1.2rem + 3vw, 3.4rem);
+	letter-spacing: -0.035em;
+	line-height: 1.02;
+}
+
+.pdz-conf--tema-vivace .pdz-conf__kicker {
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid var(--pdz-line);
+	border-radius: 999px;
+	padding: 0.35rem 0.9rem;
+	color: #fff;
+}
+
+.pdz-conf--tema-vivace .pdz-step__title {
+	font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.1rem);
+	letter-spacing: -0.03em;
+}
+
+.pdz-conf--tema-vivace .pdz-conf__note {
+	border-left-color: var(--pdz-accent);
+}
+
+/* Avanzamento sottile con un punto luminoso in testa. */
+.pdz-conf--tema-vivace .pdz-progress__track {
+	height: 6px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.08);
+	overflow: visible;
+}
+
+.pdz-conf--tema-vivace .pdz-progress__bar {
+	position: relative;
+	border-radius: 999px;
+	background: var(--pdz-sfumatura);
+	box-shadow: 0 0 18px -2px var(--pdz-accent);
+}
+
+.pdz-conf--tema-vivace .pdz-progress__bar::after {
+	content: '';
+	position: absolute;
+	right: -3px;
+	top: 50%;
+	width: 12px;
+	height: 12px;
+	transform: translateY(-50%);
+	border-radius: 50%;
+	background: #fff;
+	box-shadow: 0 0 14px 2px var(--pdz-accent);
+	animation: pdz-battito calc(2.2s * var(--pdz-tempo)) ease-in-out infinite;
+}
+
+@keyframes pdz-battito {
+	0%, 100% { transform: translateY(-50%) scale(1); opacity: 1; }
+	50% { transform: translateY(-50%) scale(1.35); opacity: 0.75; }
+}
+
+/* Fasi come pastiglie di vetro. */
+.pdz-conf--tema-vivace .pdz-rail__mark {
+	border: 1px solid var(--pdz-line);
+	background: rgba(255, 255, 255, 0.06);
+	backdrop-filter: blur(8px);
+	color: rgba(255, 255, 255, 0.5);
+	width: 2.5rem;
+	height: 2.5rem;
+	padding: 0.65rem;
+}
+
+.pdz-conf--tema-vivace .pdz-rail__item.is-current .pdz-rail__mark {
+	background: var(--pdz-sfumatura);
+	border-color: transparent;
+	color: #fff;
+	box-shadow: 0 0 24px -4px var(--pdz-accent);
+}
+
+.pdz-conf--tema-vivace .pdz-rail__item.is-done .pdz-rail__mark {
+	background: rgba(255, 255, 255, 0.1);
+	border-color: var(--pdz-accent);
+	color: var(--pdz-accent);
+}
+
+/* Risposte: riquadri di vetro che si sollevano. */
+.pdz-conf--tema-vivace .pdz-options {
+	gap: 0.75rem;
+}
+
+.pdz-conf--tema-vivace .pdz-option {
+	position: relative;
+	border: 1px solid var(--pdz-line);
+	border-left-width: 1px;
+	border-radius: var(--pdz-radius);
+	background: rgba(255, 255, 255, 0.045);
+	backdrop-filter: blur(10px);
+	padding: 1.05rem 1.2rem;
+	overflow: hidden;
+	transition: transform 0.3s cubic-bezier(0.22, 0.9, 0.3, 1), border-color 0.25s ease,
+		background-color 0.25s ease, box-shadow 0.3s ease;
+	animation: pdz-emergi calc(0.5s * var(--pdz-tempo)) cubic-bezier(0.22, 0.9, 0.3, 1) both;
+}
+
+/* Riflesso che segue il bordo superiore. */
+.pdz-conf--tema-vivace .pdz-option::before {
+	content: '';
+	position: absolute;
+	inset: 0 0 auto 0;
+	height: 1px;
+	background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+	opacity: 0;
+	transition: opacity 0.25s ease;
+}
+
+.pdz-conf--tema-vivace .pdz-option:hover {
+	transform: translateY(-3px);
+	border-color: var(--pdz-line-strong);
+	background: rgba(255, 255, 255, 0.08);
+	box-shadow: 0 18px 34px -22px #000, 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.pdz-conf--tema-vivace .pdz-option:hover::before {
+	opacity: 1;
+}
+
+.pdz-conf--tema-vivace .pdz-option:has(.pdz-option__input:checked) {
+	border-color: var(--pdz-accent);
+	background: color-mix(in srgb, var(--pdz-accent) 16%, transparent);
+	box-shadow: 0 0 32px -12px var(--pdz-accent);
+}
+
+.pdz-conf--tema-vivace .pdz-option__input {
+	width: 1.2rem;
+	height: 1.2rem;
+	border-color: var(--pdz-line-strong);
+	background: transparent;
+}
+
+.pdz-conf--tema-vivace .pdz-option__input:checked {
+	background: var(--pdz-accent);
+	border-color: var(--pdz-accent);
+	animation: pdz-scatto 0.42s cubic-bezier(0.34, 1.8, 0.64, 1);
+}
+
+.pdz-conf--tema-vivace .pdz-option__icon {
+	border-radius: 12px;
+	background: rgba(255, 255, 255, 0.08);
+	color: #fff;
+}
+
+.pdz-conf--tema-vivace .pdz-option:has(.pdz-option__input:checked) .pdz-option__icon {
+	background: var(--pdz-sfumatura);
+}
+
+@keyframes pdz-emergi {
+	from { opacity: 0; transform: translateY(16px) scale(0.985); }
+	to { opacity: 1; transform: none; }
+}
+
+@keyframes pdz-scatto {
+	0% { transform: scale(1); }
+	45% { transform: scale(1.4); }
+	100% { transform: scale(1); }
+}
+
+/* Campi e caricamento file sul fondo scuro. */
+.pdz-conf--tema-vivace .pdz-input {
+	border-radius: 12px;
+	border-color: var(--pdz-line-strong);
+	background: rgba(255, 255, 255, 0.05);
+	color: #fff;
+}
+
+.pdz-conf--tema-vivace .pdz-input::placeholder {
+	color: rgba(255, 255, 255, 0.35);
+}
+
+.pdz-conf--tema-vivace .pdz-input:focus {
+	border-color: var(--pdz-accent);
+	box-shadow: 0 0 0 4px color-mix(in srgb, var(--pdz-accent) 22%, transparent);
+}
+
+.pdz-conf--tema-vivace select.pdz-input option {
+	background: #14181c;
+	color: #fff;
+}
+
+.pdz-conf--tema-vivace .pdz-file__cta {
+	border-radius: 12px;
+	background: rgba(255, 255, 255, 0.05);
+	color: #fff;
+}
+
+/* Pulsanti a pillola con alone. */
+.pdz-conf--tema-vivace .pdz-btn {
+	border-radius: 999px;
+	transition: transform 0.25s cubic-bezier(0.34, 1.5, 0.64, 1), box-shadow 0.25s ease,
+		background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Nessun riflesso automatico: il pulsante reagisce solo a chi lo usa. */
+.pdz-conf--tema-vivace .pdz-btn--primary {
+	background: var(--pdz-sfumatura);
+	background-size: 170% 100%;
+	background-position: 0 0;
+	box-shadow: 0 12px 26px -16px var(--pdz-accent);
+	transition: transform 0.25s cubic-bezier(0.34, 1.5, 0.64, 1), box-shadow 0.25s ease,
+		background-position 0.5s ease;
+}
+
+.pdz-conf--tema-vivace .pdz-btn--primary:hover {
+	background-position: 100% 0;
+	transform: translateY(-2px);
+	box-shadow: 0 16px 32px -14px var(--pdz-accent);
+}
+
+.pdz-conf--tema-vivace .pdz-btn--primary:active {
+	transform: translateY(0);
+}
+
+/* Pulsanti a tinta unita, se si preferisce. */
+.pdz-vivace--bottoni-pieni .pdz-btn--primary {
+	background: var(--pdz-accent);
+	background-size: auto;
+}
+
+.pdz-vivace--bottoni-pieni .pdz-btn--primary:hover {
+	background: color-mix(in srgb, var(--pdz-accent) 88%, #fff);
+}
+
+.pdz-conf--tema-vivace .pdz-btn--ghost {
+	border-color: var(--pdz-line-strong);
+	color: rgba(255, 255, 255, 0.75);
+}
+
+.pdz-conf--tema-vivace .pdz-btn--ghost:hover {
+	color: #fff;
+	background: rgba(255, 255, 255, 0.06);
+}
+
+/* Punti di apertura, avvisi ed esito. */
+.pdz-conf--tema-vivace .pdz-points {
+	border-top-color: var(--pdz-line);
+}
+
+.pdz-conf--tema-vivace .pdz-point {
+	border-top-color: var(--pdz-line);
+}
+
+.pdz-conf--tema-vivace .pdz-notice {
+	border-radius: 12px;
+	background: rgba(255, 255, 255, 0.06);
+	border-left-color: var(--pdz-accent);
+	color: rgba(255, 255, 255, 0.75);
+}
+
+.pdz-conf--tema-vivace .pdz-error,
+.pdz-conf--tema-vivace .pdz-fielderror {
+	color: #ff8b8b;
+}
+
+.pdz-conf--tema-vivace .pdz-error {
+	border-radius: 12px;
+	background: color-mix(in srgb, var(--pdz-accent) 14%, transparent);
+}
+
+.pdz-conf--tema-vivace .pdz-field.is-invalid .pdz-legend,
+.pdz-conf--tema-vivace .pdz-field.is-invalid .pdz-label {
+	color: #ff8b8b;
+}
+
+.pdz-conf--tema-vivace .pdz-done {
+	border-top: 0;
+	border-radius: var(--pdz-radius);
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid var(--pdz-line);
+	padding: 2.25rem 2.5rem;
+}
+
+.pdz-conf--tema-vivace .pdz-nav {
+	border-top-color: var(--pdz-line);
+}
+
+.pdz-conf--tema-vivace .pdz-consent a,
+.pdz-conf--tema-vivace .pdz-file__remove {
+	color: var(--pdz-secondo);
+}
